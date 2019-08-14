@@ -1,0 +1,37 @@
+Fragen:
+1) Lassen Sie sich den freien und belegten Hauptspeicher sowie den belegten und freienFestplattenplatz ausgeben.
+2) Lassen Sie sich mit einem Kommando wichtige Informationen zum Betriebssystem (Kernel-Version etc.) ausgeben.
+3) Lassen Sie sich den Inhalt der Umgebungsvariablen 'PATH' ausgeben.
+4) Wo (in welchem Verzeichnis) befindet sich die Datei 'syslog'? Nutzen Sie das Kommado'find', führen Sie die Suche im Hintergrund aus und protokollieren Sie die Ausgabe desSuch-Kommandos in eine Datei sowie die Fehlerausgabe in eine andere Datei. 
+5) Geben Sie eine Liste aller Prozesse aus, die im System laufen und 'init' als Teil des Namenshaben.
+6) Geben Sie eine ausführliche Liste aller Dateien in Ihrem  home-Verzeichnisses aus, die nachdem Zeitpunkt der letzten Änderung sortiert ist. 
+7) Geben Sie zunächst die Gruppen aus, zu denen der user gehört. Wie fügen Sie einen usereiner bereits bestehenden Gruppe hinzu? 
+8) Geben Sie ausgehend von ihrem home-Verzeichnis eine Liste aller Dateien aus, die seit einerWoche geändert wurden und eine bestimmte Zeichenkette im Dateinamen enthalten. 
+9) Was genau macht das folgende verkettete Kommado?find / -name '*README*' | xargs ls -l > ListOfReadme &
+10) Geben Sie eine Liste aller Umgebungsvariablen aus. Es soll sichergestellt sein, dass eineneue Umgebungs-Variable mit dem Namen ORACLE_HOME in Zukunft immer gesetzt ist,wenn Sie eine neue shell öffnen. Was müssen Sie dafür tun?
+11) Erzeugen Sie einen beliebigen Hintergrundjob, der auch dann weiter läuft, wenn Sie diejenige shell schließen, aus der Sie den Job gestartet haben. Terminieren Sie dann diesen Job aus einer anderen shell.
+
+Zusatzaufgabe 1:
+    Will man systemweit eine Umgebungsvariable setzen, dann sind (unter anderem) die Dateien/etc/environment und /etc/bash.bashrc von Bedeutung und ggf. zu editieren. Dabei handelt es sichum Dateien, die für 'normale' Benutzer nicht änderbar sind. 
+    1.Wie können Sie eine der genannten Dateien dennoch ändern - ohne zuvor dieZugriffsberechtigungen für die Datei zu ändern und was benötigen Sie dafür? BeschreibenSie Ihre Lösung kurz!
+    
+Zusatzaufgabe 2:
+    Schreiben Sie ein eigenes Shell-Skript, welches  die Ausführung eines komplexeren Kommandosvereinfacht (vgl. dazu auch die Vorlesungsunterlagen zur Shell-Programmierung). Beschreiben Sie,was Sie tun müssen, damit alle user das Skript in Zukunft von überall her (also nicht nur imaktuellen Arbeitsverzeichnis) ausführen können.
+
+###############################################################################################
+Antworten:
+1) $ df -h
+2) $ uname –a 
+3) $ echo $PATH 
+4) /var/log/system.log 
+   $ find / -name system.log | xargs > protocol.txt & 
+   $ cat system.log >> protocol.txt 
+5) $ top | grep init    
+6) $ ls -turl ~/
+7) - $ groups "username"
+   - $ adduser "username" grouptoadd "groupName"
+8) $ $ find ~/ -maxdepth 7 | grep "keyWord"
+9) Das Komanndo sucht nach Dateien mit dem Wort "README". Dieses wird anschließend in eine Datei geschrieben. (im Hintergrund) 
+10) Die Umgebungsvariable muss in etc/bash.bashr Eingetragen sein.
+11) - ...
+    - kill "pid"    
